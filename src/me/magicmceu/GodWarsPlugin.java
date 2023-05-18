@@ -11,6 +11,6 @@ public class GodWarsPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        System.out.println("This plugin has stopped running");
+        System.out.println("This plugin has stopped running"); //hehe
     }
 }
