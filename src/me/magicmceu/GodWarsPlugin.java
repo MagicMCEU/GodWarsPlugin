@@ -1,16 +1,21 @@
 package me.magicmceu;
 
+import me.magicmceu.commands.VortexCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class GodWarsPlugin extends JavaPlugin {
 
+    public static GodWarsPlugin plugin;
+
     @Override
     public void onEnable() {
-        System.out.println("This plugin is now running, yay");
+        plugin = this;
+        this.saveDefaultConfig();
+        this.getCommand("vortex").setExecutor(new VortexCommand());
     }
 
     @Override
     public void onDisable() {
-        System.out.println("This plugin has stopped running");
+        System.out.println("Disabling GodWars.");
     }
 }
