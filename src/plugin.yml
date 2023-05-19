@@ -2,3 +2,9 @@ main: me.magicmceu.GodWarsPlugin
 name: GodWarsPlugin
 version: 0.0.1
 authors: [ItsWers0n, Tomczyq_]
+
+commands:
+  vortex:
+    permission: godwars.give.vortex
+    permission-message: "Â§4You don't have permission to use this command"
+    description: Gives you Vortex!
