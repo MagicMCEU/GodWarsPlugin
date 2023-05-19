@@ -6,7 +6,7 @@ public class GodWarsPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println("This plugin is now running");
+        System.out.println("This plugin is now running, yay");
     }
 
     @Override
