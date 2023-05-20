@@ -29,7 +29,7 @@ public class VortexListener implements Listener {
         Player p = e.getPlayer();
         Action a = e.getAction();
         ItemStack stack = e.getItem();
-        if(stack.getType().equals(Material.BLAZE_POWDER) && stack.getItemMeta().getDisplayName().equals(vortexName) && stack!=null) {
+        if(stack.getType().equals(Material.BLAZE_POWDER) && stack.getItemMeta().getDisplayName().equals(vortexName) && stack!=null && stack.getItemMeta().getDisplayName() != null) {
             if (a == Action.RIGHT_CLICK_AIR || a == Action.RIGHT_CLICK_BLOCK) {
                 if(rightVortexCooldown.containsKey(p)) {
                     if(rightVortexCooldown.get(p) > System.currentTimeMillis()) {
@@ -48,6 +48,8 @@ public class VortexListener implements Listener {
             if (a == Action.LEFT_CLICK_AIR || a == Action.LEFT_CLICK_BLOCK) {
 
             }
+        } else if(stack==null){
+
         }
     }
 
@@ -60,6 +62,7 @@ public class VortexListener implements Listener {
             Vector yVector = new Vector(0, 10, 0);
             yVector = yVector.normalize();
             p.setVelocity(xzVector.multiply(7).add(yVector));
+            rightVortexCooldown.put(p, System.currentTimeMillis() + 10000);
         } else if(click=="l") {
 
         }
