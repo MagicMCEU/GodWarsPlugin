@@ -36,7 +36,7 @@ public class DivineItemDataBase {
                     itemMeta.addEnchant(enchant, enchantLevel, true);
                 }
                 itemMeta.setDisplayName(divineItem.getInGameName());
-                if(!divineItem.getItemLore().equals(null)) {
+                if(divineItem.getItemLore() != null) {
                     itemMeta.setLore(divineItem.getItemLore());
                 }
                 itemToGive.setItemMeta(itemMeta);
