@@ -1,5 +1,6 @@
 package me.magicmceu.listeners;
 
+import me.magicmceu.utils.DivineItemDataBase;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
@@ -22,7 +23,7 @@ public class VortexListener implements Listener {
 
     boolean vortexFall;
     boolean canCheckVortexFall;
-    String vortexName = (ChatColor.YELLOW + "" + ChatColor.BOLD + "" + ChatColor.ITALIC + "Vortex");
+    String vortexName = DivineItemDataBase.getDivineName("vortex");
     HashMap<Player, Long> rightVortexCooldown = new HashMap<Player, Long>();
     HashMap<Player, Long> leftVortexCooldown = new HashMap<Player, Long>();
     HashMap<Player, Boolean> vortexAntiFall = new HashMap<Player, Boolean>();

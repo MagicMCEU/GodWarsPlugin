@@ -1,5 +1,6 @@
 package me.magicmceu.commands;
 
+import me.magicmceu.utils.DivineItemDataBase;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -22,14 +23,7 @@ public class VortexCommand implements CommandExecutor {
             switch (args.length){
                 case 0:
                     p.sendMessage(ChatColor.AQUA + "You received Vortex!");
-                    ItemStack vortex = new ItemStack(Material.BLAZE_POWDER);
-                    PlayerInventory inv = p.getInventory();
-                    ItemMeta vortexmeta = vortex.getItemMeta();
-                    vortexmeta.addEnchant(Enchantment.DURABILITY, 3, true);
-                    vortexmeta.addEnchant(Enchantment.KNOCKBACK, 2, true);
-                    vortexmeta.setDisplayName(vortexName);
-                    vortex.setItemMeta(vortexmeta);
-                    inv.addItem(vortex);
+                    DivineItemDataBase.giveDivine("vortex", p);
                     break;
                 default:
                     p.sendMessage("This command does not take any arguments.");
