@@ -52,4 +52,13 @@ public class DivineItemDataBase {
         }
         return null;
     }
+
+    public static Material getDivineMaterial(String itemName) {
+        for (DivineItem divineItem : divineItems) {
+            if (divineItem.getName().equalsIgnoreCase(itemName)) {
+                return divineItem.getMaterial();
+            }
+        }
+        return null;
+    }
 }

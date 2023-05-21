@@ -24,6 +24,7 @@ public class VortexListener implements Listener {
     boolean vortexFall;
     boolean canCheckVortexFall;
     String vortexName = DivineItemDataBase.getDivineName("vortex");
+    Material vortexMaterial = DivineItemDataBase.getDivineMaterial("vortex");
     HashMap<Player, Long> rightVortexCooldown = new HashMap<Player, Long>();
     HashMap<Player, Long> leftVortexCooldown = new HashMap<Player, Long>();
     HashMap<Player, Boolean> vortexAntiFall = new HashMap<Player, Boolean>();
@@ -37,7 +38,7 @@ public class VortexListener implements Listener {
         ItemStack stack = e.getItem();
         if (stack != null) {
             if (stack.getItemMeta().getDisplayName() != null) {
-                if (stack.getType().equals(Material.BLAZE_POWDER) && stack.getItemMeta().getDisplayName().equals(vortexName) && stack != null && stack.getItemMeta().getDisplayName() != null) {
+                if (stack.getType().equals(vortexMaterial) && stack.getItemMeta().getDisplayName().equals(vortexName) && stack != null && stack.getItemMeta().getDisplayName() != null) {
                     if (a == Action.RIGHT_CLICK_AIR || a == Action.RIGHT_CLICK_BLOCK) {
                         if (rightVortexCooldown.containsKey(p)) {
                             if (rightVortexCooldown.get(p) > System.currentTimeMillis()) {
