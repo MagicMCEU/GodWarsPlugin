@@ -27,13 +27,16 @@ public class DivineItemDataBase {
                 ItemStack itemToGive = new ItemStack(divineItem.getMaterial());
                 PlayerInventory inv = p.getInventory();
                 ItemMeta itemMeta = itemToGive.getItemMeta();
-
-                List<Enchantment> enchants = divineItem.getEnchants();
-                List<Integer> enchantLevels = divineItem.getEnchantLevels();
-                for (int i = 0; i < enchants.size(); i++) {
-                    Enchantment enchant = enchants.get(i);
-                    Integer enchantLevel = enchantLevels.get(i);
-                    itemMeta.addEnchant(enchant, enchantLevel, true);
+                if(divineItem.getEnchants() != null) {
+                    if(divineItem.getEnchantLevels() != null) {
+                        List<Enchantment> enchants = divineItem.getEnchants();
+                        List<Integer> enchantLevels = divineItem.getEnchantLevels();
+                        for (int i = 0; i < enchants.size(); i++) {
+                            Enchantment enchant = enchants.get(i);
+                            Integer enchantLevel = enchantLevels.get(i);
+                            itemMeta.addEnchant(enchant, enchantLevel, true);
+                        }
+                    }
                 }
                 itemMeta.setDisplayName(divineItem.getInGameName());
                 if(divineItem.getItemLore() != null) {

@@ -21,8 +21,7 @@ import java.util.HashMap;
 public class VortexListener implements Listener {
 
 
-    boolean vortexFall;
-    boolean canCheckVortexFall;
+
     String vortexName = DivineItemDataBase.getDivineName("vortex");
     Material vortexMaterial = DivineItemDataBase.getDivineMaterial("vortex");
     HashMap<Player, Long> rightVortexCooldown = new HashMap<Player, Long>();
@@ -46,7 +45,7 @@ public class VortexListener implements Listener {
                                 rVortexCooldownTime = (double) rVortexCooldownTime - System.currentTimeMillis();
                                 rVortexCooldownTime = (double) rVortexCooldownTime / 1000;
                                 rVortexCooldownTime = (double) (Math.round(rVortexCooldownTime * 10.0) / 10.0);
-                                p.sendMessage("§7You need to wait §e" + rVortexCooldownTime + " sec §7before using " + ChatColor.YELLOW + "" + ChatColor.BOLD + "" + ChatColor.ITALIC + "Vortex");
+                                p.sendMessage("§7You need to wait §e" + rVortexCooldownTime + " sec §7before using " + vortexName);
                             } else {
                                 VortexMagic(p, "r");
                             }

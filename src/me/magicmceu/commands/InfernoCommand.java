@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class VortexCommand implements CommandExecutor {
+public class InfernoCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -15,8 +15,8 @@ public class VortexCommand implements CommandExecutor {
             Player p = (Player) sender;
             switch (args.length){
                 case 0:
-                    p.sendMessage(ChatColor.AQUA + "You received Vortex!");
-                    DivineItemDataBase.giveDivine("vortex", p);
+                    p.sendMessage(ChatColor.AQUA + "You received Inferno!");
+                    DivineItemDataBase.giveDivine("inferno", p);
                     break;
                 default:
                     p.sendMessage("This command does not take any arguments.");
