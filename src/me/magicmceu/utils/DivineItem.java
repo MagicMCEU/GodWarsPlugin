@@ -14,12 +14,15 @@ public class DivineItem {
 
     private List<Integer> enchantLevels;
 
-    public DivineItem(String name, String inGameName, Material material, List<Enchantment> enchants, List<Integer> enchantLevels) {
+    private List<String> itemLore;
+
+    public DivineItem(String name, String inGameName, Material material, List<Enchantment> enchants, List<Integer> enchantLevels, List<String> itemLore) {
         this.name = name;
         this.inGameName = inGameName;
         this.material = material;
         this.enchants = enchants;
         this.enchantLevels = enchantLevels;
+        this.itemLore = itemLore;
     }
 
     public String getName() {
@@ -43,4 +46,6 @@ public class DivineItem {
     public List<Integer> getEnchantLevels() {
         return enchantLevels;
     }
+
+    public List<String> getItemLore() { return itemLore; }
 }

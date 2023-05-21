@@ -10,7 +10,7 @@ public class AddDivineToBase {
     public static void AddToBase(DivineItemDataBase base){
 
         // add items here in this way: base.addItem(new DivineItem(String name_id, String inGameName, Material material, List<Enchantment> enchants))
-        base.addItem(new DivineItem("vortex", (ChatColor.YELLOW + "" + ChatColor.BOLD + "" + ChatColor.ITALIC +  "Vortex"), Material.BLAZE_POWDER, List.of(Enchantment.DURABILITY, Enchantment.KNOCKBACK), List.of(3, 2)));
+        base.addItem(new DivineItem("vortex", (ChatColor.YELLOW + "" + ChatColor.BOLD + "" + ChatColor.ITALIC +  "Vortex"), Material.BLAZE_POWDER, List.of(Enchantment.DURABILITY, Enchantment.KNOCKBACK), List.of(3, 2), List.of("some lore", "heh")));
     }
 
 
