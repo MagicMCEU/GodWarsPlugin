@@ -1,6 +1,6 @@
-package me.magicmceu.commands;
+package me.magicmceu.items.commands;
 
-import me.magicmceu.utils.DivineItemDataBase;
+import me.magicmceu.items.utils.DivineItemDataBase;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

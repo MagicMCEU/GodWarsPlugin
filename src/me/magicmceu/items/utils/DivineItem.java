@@ -1,4 +1,4 @@
-package me.magicmceu.utils;
+package me.magicmceu.items.utils;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

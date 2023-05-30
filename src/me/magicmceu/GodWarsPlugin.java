@@ -1,11 +1,11 @@
 package me.magicmceu;
 
-import me.magicmceu.commands.InfernoCommand;
-import me.magicmceu.commands.VortexCommand;
-import me.magicmceu.listeners.InfernoListener;
-import me.magicmceu.listeners.VortexListener;
-import me.magicmceu.utils.AddDivineToBase;
-import me.magicmceu.utils.DivineItemDataBase;
+import me.magicmceu.items.commands.InfernoCommand;
+import me.magicmceu.items.commands.VortexCommand;
+import me.magicmceu.items.listeners.InfernoListener;
+import me.magicmceu.items.listeners.VortexListener;
+import me.magicmceu.items.utils.AddDivineToBase;
+import me.magicmceu.items.utils.DivineItemDataBase;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class GodWarsPlugin extends JavaPlugin {
@@ -28,7 +28,5 @@ public class GodWarsPlugin extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-        System.out.println("Disabling GodWars.");
-    }
+    public void onDisable() { System.out.println("Disabling GodWars."); }
 }

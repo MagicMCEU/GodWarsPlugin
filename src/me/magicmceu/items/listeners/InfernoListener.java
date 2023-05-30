@@ -1,7 +1,7 @@
-package me.magicmceu.listeners;
+package me.magicmceu.items.listeners;
 
 
-import me.magicmceu.utils.DivineItemDataBase;
+import me.magicmceu.items.utils.DivineItemDataBase;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
