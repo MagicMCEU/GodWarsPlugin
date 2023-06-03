@@ -11,9 +11,7 @@ public class DivineItem {
     private String inGameName;
     private Material material;
     private List<Enchantment> enchants;
-
     private List<Integer> enchantLevels;
-
     private List<String> itemLore;
 
     public DivineItem(String name, String inGameName, Material material, List<Enchantment> enchants, List<Integer> enchantLevels, List<String> itemLore) {

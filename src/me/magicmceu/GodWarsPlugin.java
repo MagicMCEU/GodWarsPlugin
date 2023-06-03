@@ -1,5 +1,6 @@
 package me.magicmceu;
 
+import me.magicmceu.game.api.arena.manager.ArenaDataBase;
 import me.magicmceu.items.commands.InfernoCommand;
 import me.magicmceu.items.commands.VortexCommand;
 import me.magicmceu.items.listeners.InfernoListener;
@@ -13,7 +14,7 @@ public class GodWarsPlugin extends JavaPlugin {
     public static GodWarsPlugin plugin;
 
     private DivineItemDataBase divineDataBase;
-
+    public static ArenaDataBase arenaDataBase;
 
     @Override
     public void onEnable() {
@@ -21,6 +22,7 @@ public class GodWarsPlugin extends JavaPlugin {
         this.saveDefaultConfig();
         divineDataBase = new DivineItemDataBase();
         AddDivineToBase.AddToBase(divineDataBase);
+        arenaDataBase = new ArenaDataBase();
         this.getCommand("vortex").setExecutor(new VortexCommand());
         this.getCommand("inferno").setExecutor(new InfernoCommand());
         this.getServer().getPluginManager().registerEvents(new VortexListener(), this);
