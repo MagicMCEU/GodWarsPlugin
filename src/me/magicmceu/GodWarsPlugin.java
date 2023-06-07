@@ -2,6 +2,7 @@ package me.magicmceu;
 
 import me.magicmceu.game.api.arena.commands.GodWarsArena;
 import me.magicmceu.game.api.arena.manager.ArenaDataBase;
+import me.magicmceu.game.api.arena.tabcompleters.GodWarsArenaTabCompleter;
 import me.magicmceu.game.api.lobby.commands.Lobby;
 import me.magicmceu.game.api.lobby.commands.SetLobby;
 import me.magicmceu.items.commands.InfernoCommand;
@@ -27,12 +28,17 @@ public class GodWarsPlugin extends JavaPlugin {
         AddDivineToBase.AddToBase(divineDataBase);
         arenaDataBase = new ArenaDataBase();
         SetCommandsExecutors();
-        this.getServer().getPluginManager().registerEvents(new VortexListener(), this);
-        this.getServer().getPluginManager().registerEvents(new InfernoListener(), this);
+        RegisterEvents();
+        SetTabCompleters();
     }
 
     @Override
     public void onDisable() { System.out.println("Disabling GodWars."); }
+
+    public void RegisterEvents(){
+        this.getServer().getPluginManager().registerEvents(new VortexListener(), this);
+        this.getServer().getPluginManager().registerEvents(new InfernoListener(), this);
+    }
 
 
     public void SetCommandsExecutors() {
@@ -41,5 +47,9 @@ public class GodWarsPlugin extends JavaPlugin {
         this.getCommand("gwarena").setExecutor(new GodWarsArena());
         this.getCommand("lobby").setExecutor(new Lobby());
         this.getCommand("setgwlobby").setExecutor(new SetLobby());
+    }
+
+    public void SetTabCompleters() {
+        this.getCommand("gwarena").setTabCompleter(new GodWarsArenaTabCompleter());
     }
 }
