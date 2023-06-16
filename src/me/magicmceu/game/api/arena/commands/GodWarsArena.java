@@ -2,6 +2,7 @@ package me.magicmceu.game.api.arena.commands;
 
 import me.magicmceu.GodWarsPlugin;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,7 +17,7 @@ public class GodWarsArena implements CommandExecutor {
     static FileConfiguration config = GodWarsPlugin.plugin.getConfig();
 
     private List<String> args0 = Arrays.asList("add", "finish");
-
+    private List<String> arenaType = Arrays.asList("solo", "doubles", "triples", "4v4v4v4", "4v4");
     private boolean shouldBreakCheckingMaps;
 
     private String cfgLoc = "maps.";
@@ -36,7 +37,7 @@ public class GodWarsArena implements CommandExecutor {
                 case 1:
                     switch (args[0].toLowerCase()){
                         case "add":
-                            p.sendMessage("Usage: /gwarena add <arena-name>");
+                            p.sendMessage("Usage: /gwarena add <arena-name> <arena-type>");
                             break;
                         case "finish":
                             if(!config.contains(cfgLoc)) {
@@ -58,6 +59,19 @@ public class GodWarsArena implements CommandExecutor {
                 case 2:
                     switch (args[0].toLowerCase()){
                         case "add":
+                            p.sendMessage("Usage: /gwarena add <arena-name> <arena-type>");
+                            break;
+                        default:
+                            if(args0.contains(args[0].toLowerCase())){
+                                p.sendMessage(ChatColor.RED + "Too many arguments.");
+                            } else {
+                                p.sendMessage(ChatColor.RED + "Invalid arguments.");
+                            }
+                    }
+                    break;
+                case 3:
+                    switch (args[0].toLowerCase()){
+                        case "add":
                             if(config.contains(cfgLoc)) {
                                 p.sendMessage(ChatColor.RED + "There is already arena bind to this world.");
                                 break;
@@ -72,11 +86,16 @@ public class GodWarsArena implements CommandExecutor {
                                 });
                             }
                             if(shouldBreakCheckingMaps) break;
-                            config.set(cfgLoc + ".name", args[1]);
-                            config.set(cfgLoc + ".finished", false);
-                            config.set(cfgLoc + ".test", null);
-                            GodWarsPlugin.plugin.saveConfig();
-                            if(config.get(cfgLoc + ".test") == null) p.sendMessage("Dziala");
+                            if(arenaType.contains(args[2].toLowerCase())) {
+                                config.set(cfgLoc + ".name", args[1]);
+                                config.set(cfgLoc + ".finished", false);
+                                config.set(cfgLoc + ".type", args[2]);
+                                GodWarsPlugin.plugin.saveConfig();
+                                p.sendMessage(ChatColor.GREEN + "Arena " + args[1] + " has been successfully created.");
+                                // if(config.get(cfgLoc + ".test") == null) p.sendMessage("Dziala");
+                                break;
+                            }
+                            p.sendMessage(ChatColor.RED + "This arena type does not exist.");
                             break;
                         default:
                             if(args0.contains(args[0].toLowerCase())){

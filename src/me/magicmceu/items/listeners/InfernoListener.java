@@ -83,7 +83,7 @@ public class InfernoListener implements Listener {
                 heartCenter.add(directionC.multiply(i));
                 p.getWorld().spawnParticle(Particle.HEART, heartCenter, 1);
                 ArrayList<Entity> centerNearbyEntities = (ArrayList<Entity>) heartCenter.getWorld().getNearbyEntities(heartCenter, 1, 1, 1);
-                for(Entity en : Bukkit.getServer().getWorld("world").getEntities())
+                for(Entity en : p.getWorld().getEntities())
                 {
                     if(centerNearbyEntities.contains(en)) {
                         if(en instanceof LivingEntity && en != (Entity) p) {
@@ -123,7 +123,7 @@ public class InfernoListener implements Listener {
                 smokeCenter.add(directionC.multiply(i));
                 p.getWorld().spawnParticle(Particle.LAVA, smokeCenter, 1);
                 ArrayList<Entity> centerNearbyEntities = (ArrayList<Entity>) smokeCenter.getWorld().getNearbyEntities(smokeCenter, 1, 1, 1);
-                for(Entity en : Bukkit.getServer().getWorld("world").getEntities())
+                for(Entity en : p.getWorld().getEntities())
                 {
                     if(centerNearbyEntities.contains(en)) {
                         if(en instanceof LivingEntity && en != (Entity) p) {

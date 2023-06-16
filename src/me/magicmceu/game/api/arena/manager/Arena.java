@@ -31,8 +31,10 @@ public class Arena {
     public String getArenaName() {return ArenaName;}
     public String getMapName() {return mapName;}
     public GameState getGameState() {return gameState;}
+    public void setGameState(GameState gameState) {this.gameState = gameState;}
     public Integer getMaxPlayers() {return maxPlayers;}
     public Integer getMaxPlayersPerTeam() {return maxPlayersPerTeam;}
     public Map<Team, List<Player>> getPlayersInTeams() {return playersInTeams;}
+    public void setPlayersInTeams(Map<Team, List<Player>> playersInTeams) {this.playersInTeams = playersInTeams;}
 
 }
