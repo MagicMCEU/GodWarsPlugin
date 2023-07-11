@@ -4,20 +4,21 @@ import me.magicmceu.game.manager.GameState;
 import me.magicmceu.game.manager.Team;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Arena {
 
-    private Integer ArenaID;
+    private int ArenaID;
     private String ArenaName;
     private String mapName;
     private GameState gameState;
-    private Integer maxPlayers;
-    private Integer maxPlayersPerTeam;
-    private Map<Team, List<Player>> playersInTeams;
+    private int maxPlayers;
+    private int maxPlayersPerTeam;
+    private HashMap<Team, List<Player>> playersInTeams;
 
-    public Arena(Integer ArenaID, String ArenaName, String mapName, GameState gameState, Integer maxPlayers, Integer maxPlayersPerTeam, Map<Team, List<Player>> playersInTeams){
+    public Arena(int ArenaID, String ArenaName, String mapName, GameState gameState, int maxPlayers, int maxPlayersPerTeam, HashMap<Team, List<Player>> playersInTeams){
         this.ArenaID = ArenaID;
         this.ArenaName = ArenaName;
         this.mapName = mapName;
@@ -27,14 +28,14 @@ public class Arena {
         this.playersInTeams = playersInTeams;
     }
 
-    public Integer getArenaID() {return ArenaID;}
+    public int getArenaID() {return ArenaID;}
     public String getArenaName() {return ArenaName;}
     public String getMapName() {return mapName;}
     public GameState getGameState() {return gameState;}
     public void setGameState(GameState gameState) {this.gameState = gameState;}
-    public Integer getMaxPlayers() {return maxPlayers;}
-    public Integer getMaxPlayersPerTeam() {return maxPlayersPerTeam;}
-    public Map<Team, List<Player>> getPlayersInTeams() {return playersInTeams;}
-    public void setPlayersInTeams(Map<Team, List<Player>> playersInTeams) {this.playersInTeams = playersInTeams;}
+    public int getMaxPlayers() {return maxPlayers;}
+    public int getMaxPlayersPerTeam() {return maxPlayersPerTeam;}
+    public HashMap<Team, List<Player>> getPlayersInTeams() {return playersInTeams;}
+    public void setPlayersInTeams(HashMap<Team, List<Player>> playersInTeams) {this.playersInTeams = playersInTeams;}
 
 }
