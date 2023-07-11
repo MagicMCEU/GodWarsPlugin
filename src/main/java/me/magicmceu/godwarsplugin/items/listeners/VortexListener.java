@@ -1,5 +1,6 @@
 package me.magicmceu.godwarsplugin.items.listeners;
 
+import me.magicmceu.godwarsplugin.ParticleEffect;
 import me.magicmceu.godwarsplugin.items.utils.DivineItemDataBase;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
@@ -19,9 +20,6 @@ import java.util.HashMap;
 
 
 public class VortexListener implements Listener {
-
-
-
     String vortexName = DivineItemDataBase.getDivineName("vortex");
     Material vortexMaterial = DivineItemDataBase.getDivineMaterial("vortex");
     HashMap<Player, Long> rightVortexCooldown = new HashMap<Player, Long>();
@@ -31,7 +29,7 @@ public class VortexListener implements Listener {
     Double lVortexCooldownTime;
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onVortexClick(PlayerInteractEvent e) {
+    public void onPlayerClick(PlayerInteractEvent e) {
         Player p = e.getPlayer();
         Action a = e.getAction();
         ItemStack stack = e.getItem();
@@ -74,7 +72,7 @@ public class VortexListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onVortexFall (EntityDamageEvent e){
+    public void onEntityDamageEvent(EntityDamageEvent e){
 
         if (e.getCause() != EntityDamageEvent.DamageCause.FALL) {
             return; // not fall damage.
@@ -93,7 +91,7 @@ public class VortexListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void VortexFireballDamage (EntityDamageByEntityEvent e){
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent e){
         Entity d = e.getDamager();
         Entity s = e.getEntity();
         if(d instanceof Fireball){
@@ -103,7 +101,7 @@ public class VortexListener implements Listener {
 
     public void VortexMagic (Player p, String click){
         if (click == "r") {
-            p.getWorld().playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 2.0f, 1.0f);
+            p.getWorld().playSound(p.getLocation(), Sound.ENDERDRAGON_HIT, 2.0f, 1.0f);
             Vector xzVector = new Vector(p.getLocation().getDirection().getX(), 0, p.getLocation().getDirection().getZ());
             xzVector = xzVector.normalize();
             Vector yVector = new Vector(0, 10, 0);
@@ -114,7 +112,7 @@ public class VortexListener implements Listener {
             rightVortexCooldown.put(p, System.currentTimeMillis() + 10000);
             vortexCircle(30, 1.0d, p);
         } else if (click == "l") {
-            p.getWorld().playSound(p.getLocation(), Sound.ENTITY_GHAST_SHOOT, 2.0f, 1.2f);
+            p.getWorld().playSound(p.getLocation(), Sound.GHAST_FIREBALL, 2.0f, 1.2f);
             Fireball fireball = p.launchProjectile(Fireball.class, p.getLocation().getDirection().normalize());
             fireball.setVelocity(fireball.getVelocity().multiply(2));
             fireball.setIsIncendiary(false);
@@ -125,17 +123,12 @@ public class VortexListener implements Listener {
     }
 
     public void vortexCircle ( int points, double radius, Player p){
-
-
         Location origin = p.getLocation();
 
         for (int i = 0; i < points; i++) {
             double angle = 2 * Math.PI * i / points;
             Location point = origin.clone().add(radius * Math.sin(angle), 0.0d, radius * Math.cos(angle));
-            p.getWorld().spawnParticle(Particle.SPELL_INSTANT, point, 1);
+            ParticleEffect.SPELL.play(point, 0.0f, 0.0f, 0.0f, 0.0f, 1);
         }
     }
-
-
-    }
-
+}
