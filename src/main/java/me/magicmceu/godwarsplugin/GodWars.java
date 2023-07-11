@@ -1,5 +1,6 @@
 package me.magicmceu.godwarsplugin;
 
+import me.magicmceu.godwarsplugin.configuration.ConfigurationHelper;
 import me.magicmceu.godwarsplugin.game.api.arena.commands.GodWarsArena;
 import me.magicmceu.godwarsplugin.game.api.arena.manager.ArenaDataBase;
 import me.magicmceu.godwarsplugin.game.api.arena.tabcompleters.GodWarsArenaTabCompleter;
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 public final class GodWars extends JavaPlugin {
     public static GodWars plugin;
     public static Logger logger;
+    public static ConfigurationHelper config;
     private DivineItemDataBase divineDataBase;
     public static ArenaDataBase arenaDataBase;
     private BukkitAudiences adventure;
@@ -32,13 +34,15 @@ public final class GodWars extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.adventure = BukkitAudiences.create(this);
+        adventure = BukkitAudiences.create(this);
         plugin = this;
         logger = getLogger();
-        this.saveDefaultConfig();
+        config = new ConfigurationHelper();
+
         divineDataBase = new DivineItemDataBase();
         AddDivineToBase.AddToBase(divineDataBase);
         arenaDataBase = new ArenaDataBase();
+
         SetCommandsExecutors();
         RegisterEvents();
         SetTabCompleters();
@@ -46,6 +50,8 @@ public final class GodWars extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        config.save();
+
         if (this.adventure != null) {
             this.adventure.close();
             this.adventure = null;
