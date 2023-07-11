@@ -22,24 +22,22 @@ public class Lobby implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player) {
             Player p = (Player) sender;
-            switch (args.length){
-                case 0:
-                    Float yaw = (float) config.getDouble(location + "yaw");
-                    Float pitch = (float) config.getDouble(location + "pitch");
-                    Location lobby = new Location(Bukkit.getWorld(config.getString("lobby.name")), config.getDouble(location + "x"), config.getDouble(location + "y"), config.getDouble(location + "z"), yaw, pitch);
+            if (args.length == 0) {
+                Float yaw = (float) config.getDouble(location + "yaw");
+                Float pitch = (float) config.getDouble(location + "pitch");
+                Location lobby = new Location(Bukkit.getWorld(config.getString("lobby.name")), config.getDouble(location + "x"), config.getDouble(location + "y"), config.getDouble(location + "z"), yaw, pitch);
 
-                    GodWars.plugin.adventure().player(p).sendMessage(
-                            Component.text("Teleporting you to the lobby!")
-                                    .color(TextColor.color(0x55ff55))
-                    );
+                GodWars.plugin.adventure().player(p).sendMessage(
+                        Component.text("Teleporting you to the lobby!")
+                                .color(TextColor.color(0x55ff55))
+                );
 
-                    p.teleport(lobby);
-                    break;
-                default:
-                    GodWars.plugin.adventure().player(p).sendMessage(
-                            Component.text("This command doesn't take any arguments.")
-                                    .color(TextColor.color(0xff5555))
-                    );
+                p.teleport(lobby);
+            } else {
+                GodWars.plugin.adventure().player(p).sendMessage(
+                        Component.text("This command doesn't take any arguments.")
+                                .color(TextColor.color(0xff5555))
+                );
             }
         } else {
             GodWars.logger.info("This command can only be executed by a player.");

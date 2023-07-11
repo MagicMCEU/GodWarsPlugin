@@ -16,21 +16,22 @@ public class VortexCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player) {
             Player p = (Player) sender;
-            switch (args.length){
-                case 0:
-                    GodWars.plugin.adventure().player(p).sendMessage(
-                            Component.text("You've received the ")
-                                    .color(TextColor.color(0x55ffff))
-                                    .append(
-                                            Component.text("Vortex")
-                                                    .color(TextColor.color(0xffaa00))
-                                    )
-                                    .append(Component.text("!"))
-                    );
-                    DivineItemDataBase.giveDivine("vortex", p);
-                    break;
-                default:
-                    p.sendMessage("This command does not take any arguments.");
+            if (args.length == 0) {
+                GodWars.plugin.adventure().player(p).sendMessage(
+                        Component.text("You've received the ")
+                                .color(TextColor.color(0x55ffff))
+                                .append(
+                                        Component.text("Vortex")
+                                                .color(TextColor.color(0xffaa00))
+                                )
+                                .append(Component.text("!"))
+                );
+                DivineItemDataBase.giveDivine("vortex", p);
+            } else {
+                GodWars.plugin.adventure().player(p).sendMessage(
+                        Component.text("This command doesn't take any arguments.")
+                                .color(TextColor.color(0xff5555))
+                );
             }
         } else {
             GodWars.logger.info("This command can only be executed by a player.");
