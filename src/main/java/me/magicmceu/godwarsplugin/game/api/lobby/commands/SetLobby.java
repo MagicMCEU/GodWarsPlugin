@@ -34,7 +34,7 @@ public class SetLobby implements CommandExecutor {
                     p.sendMessage(ChatColor.RED + "This command does not take any arguments.");
             }
         } else {
-            System.out.println("This command cannot be used in console.");
+            GodWars.logger.info("This command can only be executed by a player.");
         }
         return false;
     }

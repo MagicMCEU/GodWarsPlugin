@@ -13,14 +13,18 @@ import me.magicmceu.godwarsplugin.items.utils.AddDivineToBase;
 import me.magicmceu.godwarsplugin.items.utils.DivineItemDataBase;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Logger;
+
 public final class GodWars extends JavaPlugin {
     public static GodWars plugin;
+    public static Logger logger;
     private DivineItemDataBase divineDataBase;
     public static ArenaDataBase arenaDataBase;
 
     @Override
     public void onEnable() {
         plugin = this;
+        logger = getLogger();
         this.saveDefaultConfig();
         divineDataBase = new DivineItemDataBase();
         AddDivineToBase.AddToBase(divineDataBase);
@@ -31,7 +35,9 @@ public final class GodWars extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() { System.out.println("Disabling GodWars."); }
+    public void onDisable() {
+        logger.info("GodWars has been disabled");
+    }
 
     public void RegisterEvents(){
         this.getServer().getPluginManager().registerEvents(new VortexListener(), this);

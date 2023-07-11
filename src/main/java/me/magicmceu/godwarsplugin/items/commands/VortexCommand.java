@@ -1,5 +1,6 @@
 package me.magicmceu.godwarsplugin.items.commands;
 
+import me.magicmceu.godwarsplugin.GodWars;
 import me.magicmceu.godwarsplugin.items.utils.DivineItemDataBase;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -22,7 +23,7 @@ public class VortexCommand implements CommandExecutor {
                     p.sendMessage("This command does not take any arguments.");
             }
         } else {
-            System.out.println("This command cannot be used in console.");
+            GodWars.logger.info("This command can only be executed by a player.");
         }
 
         return true;
