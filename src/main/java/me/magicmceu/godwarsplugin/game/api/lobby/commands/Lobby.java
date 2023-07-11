@@ -23,9 +23,14 @@ public class Lobby implements CommandExecutor {
         if(sender instanceof Player) {
             Player p = (Player) sender;
             if (args.length == 0) {
-                Float yaw = (float) config.getDouble(location + "yaw");
-                Float pitch = (float) config.getDouble(location + "pitch");
-                Location lobby = new Location(Bukkit.getWorld(config.getString("lobby.name")), config.getDouble(location + "x"), config.getDouble(location + "y"), config.getDouble(location + "z"), yaw, pitch);
+                float yaw = (float) config.getDouble(location + "yaw", 0);
+                float pitch = (float) config.getDouble(location + "pitch", 0);
+                double x = config.getDouble(location + "x", 0);
+                double y = config.getDouble(location + "y", 200);
+                double z = config.getDouble(location + "z", 0);
+                String world = config.getString("lobby.name", "world");
+
+                Location lobby = new Location(Bukkit.getWorld(world), x, y, z, yaw, pitch);
 
                 GodWars.plugin.adventure().player(p).sendMessage(
                         Component.text("Teleporting you to the lobby!")
