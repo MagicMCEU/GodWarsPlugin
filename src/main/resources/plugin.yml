@@ -1,0 +1,28 @@
+name: GodWars
+version: '${project.version}'
+main: me.magicmceu.godwarsplugin.GodWars
+authors: [ItsWers0n, Tomczyq_]
+
+commands:
+  vortex:
+    permission: godwars.give.vortex
+    permission-message: "§4You don't have permission to use this command"
+    description: Gives you Vortex!
+  inferno:
+    permission: godwars.give.inferno
+    permission-message: "§4You don't have permission to use this command"
+    description: Gives you Inferno!
+  gwarena:
+    aliases: godwarsarena
+    permission: godwars.game.api.godwarsarena
+    permission-message: "§4You don't have permission to use this command"
+    description: GodWars arena manager command.
+  lobby:
+    aliases: l
+    permission: godwars.game.api.lobby
+    permission-message: "§4You don't have permission to use this command"
+    description: GodWars lobby command.
+  setgwlobby:
+    permission: godwars.game.api.setgwlobby
+    permission-message: "§4You don't have permission to use this command"
+    description: GodWars setlobby command.
