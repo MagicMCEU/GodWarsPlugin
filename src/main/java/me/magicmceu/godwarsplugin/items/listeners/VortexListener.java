@@ -1,6 +1,5 @@
 package me.magicmceu.godwarsplugin.items.listeners;
 
-import me.magicmceu.godwarsplugin.ParticleEffect;
 import me.magicmceu.godwarsplugin.items.utils.DivineItemDataBase;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
@@ -128,7 +127,7 @@ public class VortexListener implements Listener {
         for (int i = 0; i < points; i++) {
             double angle = 2 * Math.PI * i / points;
             Location point = origin.clone().add(radius * Math.sin(angle), 0.0d, radius * Math.cos(angle));
-            ParticleEffect.SPELL.play(point, 0.0f, 0.0f, 0.0f, 0.0f, 1);
+            p.getWorld().playEffect(point, Effect.SPELL, 4);
         }
     }
 }

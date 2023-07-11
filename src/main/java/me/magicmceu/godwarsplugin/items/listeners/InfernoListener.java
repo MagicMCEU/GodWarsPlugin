@@ -1,7 +1,5 @@
 package me.magicmceu.godwarsplugin.items.listeners;
 
-
-import me.magicmceu.godwarsplugin.ParticleEffect;
 import me.magicmceu.godwarsplugin.items.utils.DivineItemDataBase;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
@@ -19,7 +17,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 public class InfernoListener implements Listener {
     SecureRandom random = new SecureRandom();
@@ -73,7 +70,7 @@ public class InfernoListener implements Listener {
         }
     }
 
-    public void InfernoMagic(Player p , String click){
+    public void InfernoMagic(Player p, String click){
         if (click == "l") {
             leftInfernoCooldown.put(p, System.currentTimeMillis() + 20000);
             p.getWorld().playSound(p.getLocation(), Sound.ANVIL_LAND, 2.0f, 0.8f);
@@ -84,6 +81,7 @@ public class InfernoListener implements Listener {
                 Vector directionC = p.getLocation().getDirection(); // player's direction, a Vector
                 heartCenter.add(directionC.multiply(i));
                 // spawn heart
+
 
                 ArrayList<Entity> centerNearbyEntities = (ArrayList<Entity>) heartCenter.getWorld().getNearbyEntities(heartCenter, 1, 1, 1);
                 for(Entity en : p.getWorld().getEntities())
@@ -111,7 +109,7 @@ public class InfernoListener implements Listener {
                 {
                     Location heartSpawn = heartCenter;
                     heartSpawn.add(new Vector(getRandomNumber(-0.45, 0.45)*getRandomNumber(0,1)*Math.random(),getRandomNumber(-0.45, 0.45)*getRandomNumber(0,1)*Math.random(),getRandomNumber(-0.45, 0.45)*getRandomNumber(0,1)*Math.random()));
-                    ParticleEffect.HEART.play(heartSpawn, 0.5f, 0.5f, 0.5f, 0.1f, 1);
+                    heartSpawn.getWorld().playEffect(heartSpawn, Effect.HEART, 1);
                 }
             }
 
@@ -123,7 +121,7 @@ public class InfernoListener implements Listener {
                 Location smokeCenter = p.getEyeLocation();
                 Vector directionC = p.getLocation().getDirection(); // player's direction, a Vector
                 smokeCenter.add(directionC.multiply(i));
-                ParticleEffect.LAVA.play(smokeCenter, 0.5f, 0.5f, 0.5f, 0.1f, 1);
+                p.getWorld().playEffect(smokeCenter, Effect.SMOKE, 1);
                 ArrayList<Entity> centerNearbyEntities = (ArrayList<Entity>) smokeCenter.getWorld().getNearbyEntities(smokeCenter, 1, 1, 1);
                 for(Entity en : p.getWorld().getEntities())
                 {
@@ -151,7 +149,7 @@ public class InfernoListener implements Listener {
                 {
                     Location smokeSpawn = smokeCenter;
                     smokeSpawn.add(new Vector(getRandomNumber(-1.0, 1.0),getRandomNumber(-1.0, 1.0),getRandomNumber(-1.0, 1.0)).multiply(getRandomNumber(0.01, 0.4)));
-                    ParticleEffect.LAVA.play(smokeSpawn, 0.5f, 0.5f, 0.5f, 0.1f, 1);
+                    p.getWorld().playEffect(smokeSpawn, Effect.SMOKE, 1);
                 }
             }
             rightInfernoCooldown.put(p, System.currentTimeMillis() + 20000);
