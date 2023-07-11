@@ -2,6 +2,8 @@ package me.magicmceu.godwarsplugin.items.commands;
 
 import me.magicmceu.godwarsplugin.GodWars;
 import me.magicmceu.godwarsplugin.items.utils.DivineItemDataBase;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,7 +18,15 @@ public class InfernoCommand implements CommandExecutor {
             Player p = (Player) sender;
             switch (args.length){
                 case 0:
-                    p.sendMessage(ChatColor.AQUA + "You received Inferno!");
+                    GodWars.plugin.adventure().player(p).sendMessage(
+                            Component.text("You've received the ")
+                                    .color(TextColor.color(0x55ffff))
+                                    .append(
+                                            Component.text("Inferno")
+                                                    .color(TextColor.color(0xffaa00))
+                                    )
+                                    .append(Component.text("!"))
+                    );
                     DivineItemDataBase.giveDivine("inferno", p);
                     break;
                 default:

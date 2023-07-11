@@ -1,6 +1,8 @@
 package me.magicmceu.godwarsplugin.game.api.lobby.commands;
 
 import me.magicmceu.godwarsplugin.GodWars;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -28,10 +30,18 @@ public class SetLobby implements CommandExecutor {
                     config.set(location + "yaw", loc.getYaw());
                     config.set(location + "pitch", loc.getPitch());
                     GodWars.plugin.saveConfig();
-                    p.sendMessage(ChatColor.AQUA + "GodWars Lobby successfully set at " + loc.getX() + " x " + loc.getY() + " y " + loc.getZ() + " z with current facing.");
+
+                    GodWars.plugin.adventure().player(p).sendMessage(
+                            Component.text("Lobby location set!")
+                                    .color(TextColor.color(0x55ff55))
+                    );
+
                     break;
                 default:
-                    p.sendMessage(ChatColor.RED + "This command does not take any arguments.");
+                    GodWars.plugin.adventure().player(p).sendMessage(
+                            Component.text("This command doesn't take any arguments.")
+                                    .color(TextColor.color(0xff5555))
+                    );
             }
         } else {
             GodWars.logger.info("This command can only be executed by a player.");

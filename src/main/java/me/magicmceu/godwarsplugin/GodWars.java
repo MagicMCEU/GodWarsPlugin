@@ -11,6 +11,7 @@ import me.magicmceu.godwarsplugin.items.listeners.InfernoListener;
 import me.magicmceu.godwarsplugin.items.listeners.VortexListener;
 import me.magicmceu.godwarsplugin.items.utils.AddDivineToBase;
 import me.magicmceu.godwarsplugin.items.utils.DivineItemDataBase;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
@@ -20,9 +21,18 @@ public final class GodWars extends JavaPlugin {
     public static Logger logger;
     private DivineItemDataBase divineDataBase;
     public static ArenaDataBase arenaDataBase;
+    private BukkitAudiences adventure;
+
+    public BukkitAudiences adventure() {
+        if(this.adventure == null) {
+            throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
+        }
+        return this.adventure;
+    }
 
     @Override
     public void onEnable() {
+        this.adventure = BukkitAudiences.create(this);
         plugin = this;
         logger = getLogger();
         this.saveDefaultConfig();
@@ -36,6 +46,11 @@ public final class GodWars extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (this.adventure != null) {
+            this.adventure.close();
+            this.adventure = null;
+        }
+
         logger.info("GodWars has been disabled");
     }
 
