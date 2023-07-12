@@ -26,3 +26,7 @@ commands:
     permission: godwars.game.api.setgwlobby
     permission-message: "§4You don't have permission to use this command"
     description: GodWars setlobby command.
+  fling:
+    permission: godwars.command.fling
+    permission-message: "§4You don't have permission to use this command"
+    description: Fling player(s) to space!
