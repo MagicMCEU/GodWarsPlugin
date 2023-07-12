@@ -25,7 +25,7 @@ public class GodWarsArenaTabCompleter implements TabCompleter {
             GWarenaType = arenaType;
             return GWarenaType;
         } else {
-            return List.of("");
+            return new ArrayList<>();
         }
     }
 
