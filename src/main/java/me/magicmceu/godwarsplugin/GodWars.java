@@ -1,5 +1,6 @@
 package me.magicmceu.godwarsplugin;
 
+import me.magicmceu.godwarsplugin.command.CommandsRegistrant;
 import me.magicmceu.godwarsplugin.configuration.ConfigurationHelper;
 import me.magicmceu.godwarsplugin.game.api.arena.commands.GodWarsArena;
 import me.magicmceu.godwarsplugin.game.api.arena.manager.ArenaDataBase;
@@ -42,6 +43,8 @@ public final class GodWars extends JavaPlugin {
         divineDataBase = new DivineItemDataBase();
         AddDivineToBase.AddToBase(divineDataBase);
         arenaDataBase = new ArenaDataBase();
+
+        CommandsRegistrant.getInstance().registerCommands(this);
 
         SetCommandsExecutors();
         RegisterEvents();
