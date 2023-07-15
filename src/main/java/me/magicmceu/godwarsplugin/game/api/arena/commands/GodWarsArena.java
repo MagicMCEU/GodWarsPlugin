@@ -31,7 +31,10 @@ public class GodWarsArena implements CommandExecutor {
             cfgLoc = cfgLoc + p.getWorld().getName();
                     switch (args.length){
                 case 0:
-                    p.sendMessage("Usage:"); //TODO: Usage message
+                    p.sendMessage("Usage: /gwarena add <arena-name> <arena-type>");
+                    p.sendMessage("Makes a new GodWars arena and makes it able to edit");
+                    p.sendMessage("Usage: /gwarena finish");
+                    p.sendMessage("Finishes the arena you are currently editing");
                     break;
                 case 1:
                     switch (args[0].toLowerCase()){
