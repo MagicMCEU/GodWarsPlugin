@@ -46,7 +46,7 @@ public class GodWarsArena implements CommandExecutor {
                                 p.sendMessage(ChatColor.YELLOW + "This arena does not exist yet, to create use /gwarena add <arena-name>");
                                 break;
                             }
-                            if(config.getBoolean(cfgLoc + ".finished") == true){
+                            if(config.getBoolean(cfgLoc + ".finished")){
                                 p.sendMessage(ChatColor.YELLOW + "This map is already finished");
                                 break;
                             }
